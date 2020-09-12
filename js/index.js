@@ -39,7 +39,7 @@ $(document).ready(function () {
                             id = resultados[i].id;
                             title = resultados[i].title
                             console.log(resultados[i]);
-                            imgref = "http://image.tmdb.org/t/p/w185" + img;
+                            imgref = "https://image.tmdb.org/t/p/w185" + img;
                             href = "detail.html?movie=" + id;
                             if (img != null) {
                                 $('<div class="poster"><a href="' + href + '"><img id="' + id + '" src="' + imgref + '"/></a><div class="text-descr"><p>"' + title + '"</p></div></div>').appendTo("li[id$='" + count + "']");
