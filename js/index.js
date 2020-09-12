@@ -11,7 +11,7 @@ $(document).ready(function () {
             $("#query").val("");
             $.ajax({
                 url: "https://api.themoviedb.org/3/search/movie/",
-                type: "GET",
+                type: "POST",
                 dataType: "JSON",
                 data: {
                     api_key: "f7598fda063f671ed1a42ea9387b6526",
@@ -39,7 +39,7 @@ $(document).ready(function () {
                             id = resultados[i].id;
                             title = resultados[i].title
                             console.log(resultados[i]);
-                            imgref = "https://image.tmdb.org/t/p/w185" + img;
+                            imgref = "http://image.tmdb.org/t/p/w185" + img;
                             href = "detail.html?movie=" + id;
                             if (img != null) {
                                 $('<div class="poster"><a href="' + href + '"><img id="' + id + '" src="' + imgref + '"/></a><div class="text-descr"><p>"' + title + '"</p></div></div>').appendTo("li[id$='" + count + "']");
