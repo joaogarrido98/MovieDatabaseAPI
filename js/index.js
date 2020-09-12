@@ -11,7 +11,7 @@ $(document).ready(function () {
             $("#query").val("");
             $.ajax({
                 url: "https://api.themoviedb.org/3/search/movie/",
-                type: "POST",
+                type: "GET",
                 dataType: "JSON",
                 data: {
                     api_key: "f7598fda063f671ed1a42ea9387b6526",
