@@ -1,0 +1,433 @@
+body, html {
+    margin: 0;
+    height: 100%;
+    font-family: 'Varela Round', sans-serif;
+}
+
+body{
+    background: url("../img/background.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+div.backBtn {
+    width: 150px;
+    left: 30px;
+    top: 50px;
+    background-color: #F76060;
+    transition: all 0.4s ease;
+    position: fixed;
+    cursor: pointer;
+}
+
+span.line {
+    bottom: auto;
+    right: auto;
+    top: auto;
+    left: auto;
+    background-color: #F76060;
+    border-radius: 10px;
+    width: 100%;
+    left: 0px;
+    height: 2px;
+    display: block;
+    position: absolute;
+    transition: width 0.2s ease 0.1s, left 0.2s ease, transform 0.2s ease 0.3s, background-color 0.2s ease;
+}
+
+span.tLine {
+    top: 0px;
+}
+
+span.mLine {
+    top: 13px;
+    opacity: 0;
+}
+
+span.bLine {
+    top: 26px;
+}
+
+.label {
+    position: absolute;
+    left: 0px;
+    top: 5px;
+    width: 100%;
+    color: #F4f4f4;
+    text-align: center;
+    transition: all 0.4s ease;
+    font-size: 1em;
+}
+
+div.backBtn:hover span.label {
+    left: 25px
+}
+
+div.backBtn:hover span.line {
+    left: -10px;
+    height: 5px;
+    background-color: #F76060;
+}
+
+div.backBtn:hover span.tLine {
+    width: 25px;
+    transform: rotate(-45deg);
+    left: -15px;
+    top: 6px;
+}
+
+div.backBtn:hover span.mLine {
+    opacity: 1;
+    width: 30px;
+}
+
+div.backBtn:hover span.bLine {
+    width: 25px;
+    transform: rotate(45deg);
+    left: -15px;
+    top: 20px;
+}
+
+.container {
+    display: block;
+    margin-left: 20%;
+    width: 60%;
+    background-color: rgb(53, 53, 53);
+    height: 100%;
+}
+
+#top {
+    height: auto;
+    padding: 25px;
+    background-color: rgb(53, 53, 53);
+}
+
+.center {
+    padding: 20px;
+    background-color: rgb(165, 165, 173);
+    height: auto;
+}
+
+#rating {
+    float: right;
+    right: 20%;
+    position: relative;
+    top: 1em;
+}
+
+#average {
+    font-size: x-large;
+    color: rgb(187, 168, 29);
+}
+
+#date {
+    font-size: 0.70em;
+    color: rgb(165, 165, 173);
+}
+
+#titlemovie {
+    font-size: xx-large;
+    color: khaki;
+}
+
+#movieinfo {
+    position: relative;
+    display: inline-block;
+    max-width: 50%;
+    left: 0.80em;
+}
+
+.informationholder {
+    height: auto;
+    max-width: 50%;
+    right: 10%;
+    position: relative;
+    float: right;
+    top: 1em;
+}
+
+.mininfo {
+    left: 2px;
+    color: rgb(165, 165, 173);
+    font-size: small;
+}
+
+.imageholder {
+    position: relative;
+    display: inline-block;
+    max-width: 30%;
+    left: 3em;
+    top: 0.40em;
+}
+
+#overview {
+    text-align: center;
+    font-size: large;
+}
+
+#iframe {
+    position: relative!important;
+    top: 1em;
+    width: 100%;
+    display: block;
+    height: 300px;
+}
+
+#tagline {
+    position: relative;
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+.down {
+    padding: 20px;
+    background-color: rgb(165, 165, 173);
+}
+
+.castcrew {
+    padding: 20px;
+    background-color: cornsilk;
+}
+
+.reviews {
+    padding: 20px;
+    background-color: cornsilk;
+}
+
+.recommendations {
+    padding: 20px;
+    background-color: rgb(165, 165, 173);
+}
+
+.infos {
+    position: relative;
+    display: block;
+    top: 0;
+}
+
+table {
+    border-collapse: collapse;
+    margin-bottom: 10px;
+}
+
+th {
+    background-color: rgb(133, 133, 138);
+    padding: 10px;
+}
+
+.imgrec {
+    width: 100%;
+    height: 80%;
+}
+
+.imgrec:hover {
+    opacity: 0.7;
+}
+
+#img {
+    cursor: pointer;
+    transition: 0.3s;
+    width: 280px;
+    height: 380px;
+    border-radius: 10px;
+}
+
+#img:hover {
+    opacity: 0.7;
+}
+
+#review td {
+    max-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.frame {
+    position: relative;
+    display: block;
+}
+
+.btn {
+    background: none;
+    width: 100%;
+    color: #F76060;
+    border: 1px solid #F76060;
+    border-radius: 0px;
+    font-size: 14px;
+    border-radius: 16px;
+    padding: 8px;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background-color: #F76060;
+    color: white;
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+}
+
+#caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 150px;
+}
+
+.modal-content, #caption {
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+@keyframes zoom {
+    from {
+        transform: scale(0)
+    }
+    to {
+        transform: scale(1)
+    }
+}
+
+#backBtnsm {
+    padding-top: 4px;
+    padding-left: 6px;
+    padding-bottom: 2px;
+    border-radius: 60px;
+    width: 20px;
+    height: 20px;
+    left: 10px;
+    top: 20px;
+    background-color: none;
+    border-color: #F76060;
+    border-width: 2px;
+    border-style: solid;
+    color: #F76060;
+    position: fixed;
+    cursor: pointer;
+    display: none;
+}
+
+#backBtnsm:hover {
+    background-color: #F76060;
+    color: white;
+    transition: ease-in-out 0.7s;
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close:hover, .close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#imdb {
+    position: fixed;
+    bottom: 10px;
+    right: 20px;
+    float: right;
+}
+
+#imdbimg {
+    height: 50px;
+    width: 50px;
+}
+
+#cast {
+    position: relative;
+    top: 1em;
+    width: 100%;
+    text-align: center;
+}
+#rec{
+    width: 40%;
+}
+@media only screen and (max-width: 1024px) {
+    .container {
+        width: 80%;
+        margin-left: 15%;
+    }
+    .top {
+        position: relative;
+    }
+    #movieinfo {
+        max-width: 100%;
+        display: block;
+    }
+    #rating {
+        display: inline-block;
+        float: none;
+        position: static;
+        margin-top: 10px;
+        margin-left: 10px;
+    }
+    .imageholder {
+        max-width: 100%;
+        left: 5%;
+        right: 5%;
+        top: 5%;
+        border-radius: 10px;
+    }
+    #img {
+        height: 30%;
+        width: 90%;
+    }
+    #backBtnsm {
+        display: block;
+    }
+    #backbg {
+        display: none;
+    }
+    .informationholder {
+        max-width: 100%;
+        right: 0;
+        float: none;
+        text-align: justify;
+    }
+    #imdb {
+        position: fixed;
+        top: 70px;
+        left: 10px;
+        height: 30px;
+        width: 30px;
+    }
+    #imdbimg {
+        height: 30px;
+        width: 30px;
+    }
+    #rec{
+        width: 100%;
+    }
+}

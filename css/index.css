@@ -1,0 +1,107 @@
+body,
+html {
+    margin: 0;
+    height: 100%;
+    font-family: 'Varela Round', sans-serif;
+}
+
+body {
+    background: url("../img/background.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.search-box {
+    position: absolute;
+    top: 12%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #3b424d;
+    border-radius: 40px;
+    padding: 10px;
+    transition: 0.3s all ease-in-out;
+}
+
+.search-box:hover>.search-txt {
+    width: 400px;
+    padding: 0 6px;
+}
+
+.search-box:hover>.search-btn {
+    background: rgb(175, 175, 175);
+}
+
+.search-btn {
+    color: orangered;
+    float: right;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    background: #2f3640;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.4s;
+    outline: none;
+}
+
+.search-txt {
+    border: none;
+    background: none;
+    outline: none;
+    float: left;
+    padding: 0;
+    color: white;
+    font-size: 20px;
+    transition: 0.4s;
+    line-height: 40px;
+    width: 0px;
+}
+
+#filmsList{
+    background-color: #3b424d;
+    display: none;
+    border-radius: 16px;
+    color: white;
+    padding: 10px;
+}
+.poster {
+    position: relative;
+    margin: 10px;
+}
+
+.poster p {
+    padding: 5px;
+    margin: 0!important;
+    text-align: center;
+    font-weight: 600;
+}
+
+.text-descr {
+    transition: 0.3s all ease-in-out;
+    opacity: 0;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    background-color: #2f3640c0;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.poster:hover .text-descr{
+    opacity: 1;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    border-radius: 10px;
+    width: 250px;
+    height: 300px;
+}
