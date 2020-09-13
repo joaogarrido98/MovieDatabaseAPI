@@ -251,21 +251,6 @@ $(document).ready(function () {
             }
         });
     }
-    function enlarge() {
-        var modal = document.getElementById("myModal");
-        var img = document.getElementById("img");
-        var modalImg = document.getElementById("img01");
-        var captionText = document.getElementById("caption");
-        img.onclick = function () {
-            modal.style.display = "block";
-            modalImg.src = this.src;
-            captionText.innerHTML = this.alt;
-        }
-        var span = document.getElementsByClassName("close")[0];
-        span.onclick = function () {
-            modal.style.display = "none";
-        }
-    }
     function getReviews(movieId) {
         $.ajax({
             url: "https://api.themoviedb.org/3/movie/" + movieId + "/reviews",
@@ -300,3 +285,17 @@ $(document).ready(function () {
         });
     }
 });
+
+function enlarge() {
+    let modal = document.getElementById("myModal");
+    let modalImg = document.getElementById("img01");
+    let captionText = document.getElementById("caption");
+    document.getElementById("img").addEventListener("click", () => {
+        modal.style.display = "block";
+        modalImg.src = document.getElementById("img").src;
+        captionText.innerHTML = document.getElementById("img").alt;
+    });
+    document.getElementsByClassName("close")[0].addEventListener("click", () => {
+        modal.style.display = "none";
+    });
+}

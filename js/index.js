@@ -1,72 +1,54 @@
-$(document).ready(function () {
-    $("#searchme").click(function () {
-        $("#filmsList").html("<ul></ul>");
-        var query = $("#query").val();
-        if (query == "") {
-            $(".error").css("display", "block");
-            setTimeout(function () {
-                $(".error").fadeOut(1000);
-            }, 1000);
-        } else {
-            $("#query").val("");
-            $.ajax({
-                url: "https://api.themoviedb.org/3/search/movie/",
-                type: "GET",
-                dataType: "JSON",
-                data: {
-                    api_key: "f7598fda063f671ed1a42ea9387b6526",
-                    language: "en-US",
-                    query: query,
-                    include_adult: false,
-                },
-                success: function (resposta) {
-                    if (resposta.total_results == 0) {
-                        $("#noresults").css("display", "block");
-                    } else {
-                        $("#noresults").css("display", "none");
-                        var count = 0;
-                        var img;
-                        var imgref;
-                        var id;
-                        var title;
-                        var filmes = resposta;
-                        var resultados = filmes["results"];
-                        for (let i = 0; i < resultados.length; i++) {
-                            $("#filmsList").css("display", "block");
-                            $(".container").css("display", "block");
-                            $('<li class="list-inline-item" id="' + i + '"></li>').appendTo("ul");
-                            img = resultados[i].poster_path;
-                            id = resultados[i].id;
-                            title = resultados[i].title
-                            console.log(resultados[i]);
-                            imgref = "https://image.tmdb.org/t/p/w185" + img;
-                            href = "detail.html?movie=" + id;
-                            if (img != null) {
-                                $('<div class="poster"><a href="' + href + '"><img id="' + id + '" src="' + imgref + '"/></a><div class="text-descr"><p>"' + title + '"</p></div></div>').appendTo("li[id$='" + count + "']");
-                                count = count + 1;
-                            }
-                        }
-                    }
-                },
-                error: function (erro) {
-                }
-            });
-        }
-    });
-});
-
-
-/*document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("searchme").addEventListener("click", () => {
         document.getElementById("filmsList").innerHTML = "<ul></ul>";
         let query = document.getElementById("query").value;
-        if(query === "" || query === null){
+        if (query === "" || query === null) {
             document.querySelector(".error").style.display = "block";
             setTimeout(function () {
                 document.querySelector(".error").style.display = "none";
             }, 2000);
-        }else{
+        } else {
             document.getElementById("query").value = "";
+            let api = "f7598fda063f671ed1a42ea9387b6526"
+            fetch(`https://api.themoviedb.org/3/search/movie?api_key=${api}&query=${query}`)
+                .then(response => response.json())
+                .then(response => {
+                    if (response.total_results == 0) {
+                        document.querySelector("#noresults").style.display = "block";
+                    } else {
+                        document.querySelector("#noresults").style.display = "none";
+                        let movies = response["results"];
+                        for (let i = 0; i < movies.length; i++) {
+                            document.querySelector("#filmsList").style.display = "block";
+                            document.querySelector(".container").style.display = "block";
+                            let ul = document.querySelector("#filmsList");
+                            let li = document.createElement('li');
+                            li.id = i;
+                            li.className = "list-inline-item"
+                            ul.appendChild(li);
+                            let imgref = "http://image.tmdb.org/t/p/w185" + movies[i].poster_path;
+                            href = "detail.html?movie=" + movies[i].id;
+                            if (movies[i].poster_path !== null) {
+                                let div = document.createElement("div");
+                                div.className = "poster";
+                                let a = document.createElement("a");
+                                a.href = href;
+                                let imgElement = document.createElement("img");
+                                imgElement.id = movies[i].id;
+                                imgElement.src = imgref;
+                                let textDiv = document.createElement("div");
+                                textDiv.className = "text-descr";
+                                let p = document.createElement("p");
+                                p.innerText = movies[i].title;
+                                textDiv.appendChild(p);
+                                div.appendChild(a);
+                                div.appendChild(textDiv);
+                                a.appendChild(imgElement);                                
+                                li.appendChild(div);
+                            }
+                        }
+                    }
+                });
         }
     });
-});*/
+});
