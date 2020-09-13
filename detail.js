@@ -1,7 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
-    var url_string = window.location.href;
-    var url = new URL(url_string);
-    var movieId = url.searchParams.get("movie");
+    const api = "f7598fda063f671ed1a42ea9387b6526";
+    let url_string = window.location.href;
+    let url = new URL(url_string);
+    let movieId = url.searchParams.get("movie");
     enlarge();
 
     $.ajax({
@@ -13,13 +14,13 @@ document.addEventListener("DOMContentLoaded", () => {
             language: "en-US",
         },
         success: function (resposta) {
-            var img = resposta["poster_path"];
-            var imdb = "https://www.imdb.com/title/" + resposta["imdb_id"];
-            var imgref;
-            var year = resposta["release_date"];
-            var average = resposta["vote_average"];
-            var res = year.split("-", 1);
-            var totalrate = resposta["vote_count"];
+            let img = resposta["poster_path"];
+            let imdb = "https://www.imdb.com/title/" + resposta["imdb_id"];
+            let imgref;
+            let year = resposta["release_date"];
+            let average = resposta["vote_average"];
+            let res = year.split("-", 1);
+            let totalrate = resposta["vote_count"];
             if (img != null) {
                 imgref = "http://image.tmdb.org/t/p/w500" + img;
                 $("#img").attr("src", imgref);
@@ -27,39 +28,39 @@ document.addEventListener("DOMContentLoaded", () => {
                 imgref = "resources/default_img.jpg";
                 $("#img").attr("src", imgref);
             }
-            var title = resposta["original_title"];
+            let title = resposta["original_title"];
             if (title != "") {
                 $("#titlemovie").text(title);
             } else {
                 title = "---";
                 $("#titlemovie").text(title);
             }
-            var status = resposta["status"];
+            let status = resposta["status"];
             if (status != "") {
                 $("#status").text(status);
             } else {
                 status = "Unknown";
                 $("#status").text(status);
             }
-            var revenue = resposta["revenue"];
+            let revenue = resposta["revenue"];
             if (revenue != "") {
                 $("#revenue").text(revenue + "€");
             } else {
                 revenue = "Unknown";
                 $("#revenue").text(revenue);
             }
-            var budget = resposta["budget"];
+            let budget = resposta["budget"];
             if (budget != "") {
                 $("#budget").text(budget + "€");
             } else {
                 budget = "Unknown";
                 $("#budget").text(budget);
             }
-            var genresarr = resposta["genres"];
-            var pcsarr = resposta["production_companies"];
-            var pcarr = resposta["production_countries"];
-            var homepage = resposta["homepage"];
-            var tagline = resposta["tagline"];
+            let genresarr = resposta["genres"];
+            let pcsarr = resposta["production_companies"];
+            let pcarr = resposta["production_countries"];
+            let homepage = resposta["homepage"];
+            let tagline = resposta["tagline"];
             if (tagline != "") {
                 $("#tagline").text('"' + tagline + '"');
             } else {
@@ -67,9 +68,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 $("#tagline").text(tagline);
             }
 
-            var runtime = resposta["runtime"];
-            var overview = resposta["overview"];
-            var languagearr = resposta["spoken_languages"];
+            let runtime = resposta["runtime"];
+            let overview = resposta["overview"];
+            let languagearr = resposta["spoken_languages"];
             $("#language").text(languagearr[0].name + " |");
             for (let i = 0; i < genresarr.length; i++) {
                 $("#genres").append(genresarr[i].name + " | ");
@@ -87,68 +88,17 @@ document.addEventListener("DOMContentLoaded", () => {
             $("#totalrate").text("Total: " + totalrate);
             $("#runtime").text(runtime + "min | ");
             $("#imdb").attr("href", imdb);
-            getVideo(movieId);
-            getKeyword(movieId);
-            getCredits(movieId);
-            getRecommendation(movieId);
-            getReviews(movieId);
-            console.log(resposta);
+            getVideo(movieId, api);
+            getKeyword(movieId, api);
+            getCredits(movieId, api);
+            getRecommendation(movieId, api);
+            getReviews(movieId, api);
         },
         error: function (erro) {
             console.log(erro);
         }
     });
 
-    function getVideo(movieId) {
-        $.ajax({
-            type: 'GET',
-            url: 'https://api.themoviedb.org/3/movie/' + movieId + "/videos",
-            data: {
-                api_key: 'f7598fda063f671ed1a42ea9387b6526',
-                language: "en-US",
-            },
-            success: function (data) {
-                var video = data["results"][0];
-                if (video != null) {
-                    var videoId = video.key;
-                    embedVideo(videoId)
-                }
-            },
-            error: function (response) {
-                console.log("Request Failed");
-            }
-        });
-    }
-    function embedVideo(videoId) {
-        $('#iframe').attr('src', 'https://www.youtube.com/embed/' + videoId);
-    }
-    function getKeyword(movieId) {
-        $.ajax({
-            url: "https://api.themoviedb.org/3/movie/" + movieId + "/keywords",
-            type: "GET",
-            dataType: "JSON",
-            data: {
-                api_key: "f7598fda063f671ed1a42ea9387b6526",
-                language: "en-US",
-            },
-            success: function (resposta) {
-                var keyarr = resposta["keywords"];
-                if (keyarr.length > 5) {
-                    for (let i = 0; i < 5; i++) {
-                        $("#keywords").append(keyarr[i]["name"] + " | ");
-                    }
-                } else {
-                    for (let i = 0; i < keyarr.length; i++) {
-                        $("#keywords").append(keyarr[i]["name"] + " | ");
-                    }
-                }
-
-            },
-            error: function (erro) {
-                console.log("Request Failed");
-            }
-        });
-    }
     function getCredits(movieId) {
         $.ajax({
             url: "https://api.themoviedb.org/3/movie/" + movieId + "/credits",
@@ -158,10 +108,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 api_key: "f7598fda063f671ed1a42ea9387b6526",
             },
             success: function (resposta) {
-                var castarr = resposta["cast"];
+                let castarr = resposta["cast"];
                 if (castarr.length > 15) {
                     for (let i = 0; i < 15; i++) {
-                        var image = castarr[i].profile_path;
+                        let image = castarr[i].profile_path;
                         if (image == null) {
                             image = "resources/default_img.jpg";
                             $('<tr style="border-bottom: 1px solid #ddd;" id="' + i + '"></tr>').appendTo("#cast");
@@ -174,7 +124,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
                 } else {
                     for (let i = 0; i < castarr.length; i++) {
-                        var image = castarr[i].profile_path;
+                        let image = castarr[i].profile_path;
                         if (image == null) {
                             image = "resources/default_img.jpg";
                             $('<tr style="border-bottom: 1px solid #ddd;" id="' + i + '"></tr>').appendTo("#cast");
@@ -203,10 +153,10 @@ document.addEventListener("DOMContentLoaded", () => {
             },
             success: function (resposta) {
                 console.log(resposta);
-                var recarr = resposta["results"];
+                let recarr = resposta["results"];
                 if (recarr.length > 6) {
                     for (let i = 0; i < 3; i++) {
-                        var image = recarr[i].poster_path;
+                        let image = recarr[i].poster_path;
                         if (image == null) {
                             image = "resources/default_img.jpg";
                             $('<td><img src="' + image + '" class="imgrec">').appendTo("#first");
@@ -215,7 +165,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         }
                     }
                     for (let i = 3; i < 6; i++) {
-                        var image = recarr[i].poster_path;
+                        let image = recarr[i].poster_path;
                         if (image == null) {
                             image = "resources/default_img.jpg";
                             $('<td><img src="' + image + '" class="imgrec">').appendTo("#second");
@@ -225,7 +175,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
                 } else {
                     for (let i = 0; i < 3; i++) {
-                        var image = recarr[i].poster_path;
+                        let image = recarr[i].poster_path;
                         if (image == null) {
                             image = "resources/default_img.jpg";
                             $('<td><img src="' + image + '" class="imgrec"></td>').appendTo("#first");
@@ -234,7 +184,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         }
                     }
                     for (let i = 3; i < recarr.length; i++) {
-                        var image = recarr[i].poster_path;
+                        let image = recarr[i].poster_path;
                         if (image == null) {
                             image = "resources/default_img.jpg";
                             $('<td><img src="' + image + '" class="imgrec"></td>').appendTo("#second");
@@ -267,8 +217,7 @@ function enlarge() {
     });
 }
 
-function getReviews(movieId) {
-    let api = "f7598fda063f671ed1a42ea9387b6526";
+function getReviews(movieId, api) {
     fetch(`https://api.themoviedb.org/3/movie/${movieId}/reviews?api_key=${api}`)
         .then(response => response.json())
         .then(response => {
@@ -284,17 +233,17 @@ function getReviews(movieId) {
                     document.querySelector("#review").appendChild(tr);
                     let td_author = document.createElement("td");
                     td_author.className = "td_author";
-                    td_author.innerText = reviewarr[i].author;
+                    td_author.textContent = reviewarr[i].author;
                     let td_content = document.createElement("td");
                     td_content.className = "td_content";
-                    td_content.innerText = reviewarr[i].content;
+                    td_content.textContent = reviewarr[i].content;
                     let td_button = document.createElement("td");
                     td_button.className = "td_button";
-                    let anchor = document.createElement("a");  
-                    anchor.href = reviewarr[i].url;   
-                    let btn  = document.createElement("button");
+                    let anchor = document.createElement("a");
+                    anchor.href = reviewarr[i].url;
+                    let btn = document.createElement("button");
                     btn.className = "btn";
-                    btn.innerText = "More!";
+                    btn.textContent = "More!";
                     anchor.appendChild(btn);
                     td_button.appendChild(anchor);
                     tr.appendChild(td_author);
@@ -304,4 +253,32 @@ function getReviews(movieId) {
 
             }
         });
+}
+
+function embedVideo(videoId) {
+    let iframe = document.querySelector('#iframe');
+    iframe.src = 'https://www.youtube.com/embed/' + videoId;
+}
+
+function getKeyword(movieId, api) {
+    fetch(`https://api.themoviedb.org/3/movie/${movieId}/keywords?api_key=${api}`)
+        .then(response => response.json())
+        .then(response => {
+            let keyarr = response["keywords"];
+            for (let i = 0; i < keyarr.length; i++) {
+                document.querySelector("#keywords").append(keyarr[i]["name"] + " | ");
+            }
+        });
+}
+
+function getVideo(movieId, api) {
+    fetch(`https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${api}`)
+    .then(response => response.json())
+    .then(response => {
+        let video = response["results"][0];
+        if (video != null) {
+            let videoId = video.key;
+            embedVideo(videoId)
+        }
+    });
 }
