@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
             let res = year.split("-", 1);
             let totalrate = resposta["vote_count"];
             if (img != null) {
-                imgref = "http://image.tmdb.org/t/p/w500" + img;
+                imgref = "https://image.tmdb.org/t/p/w500" + img;
                 $("#img").attr("src", imgref);
             } else {
                 imgref = "resources/default_img.jpg";
@@ -118,7 +118,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             $('<td><img src="' + image + '" style="width:60px; height:70px;"></td><td>' + castarr[i].name + '</td><td>' + castarr[i].character + '</td>').appendTo("tr[id$='" + i + "']");
                         } else {
                             $('<tr style="border-bottom: 1px solid #ddd;" id="' + i + '"></tr>').appendTo("#cast");
-                            $('<td><img src="http://image.tmdb.org/t/p/w185' + image + '" style="width:60px; height:70px;"></td><td>' + castarr[i].name + '</td><td>' + castarr[i].character + '</td>').appendTo("tr[id$='" + i + "']");
+                            $('<td><img src="https://image.tmdb.org/t/p/w185' + image + '" style="width:60px; height:70px;"></td><td>' + castarr[i].name + '</td><td>' + castarr[i].character + '</td>').appendTo("tr[id$='" + i + "']");
                         }
 
                     }
@@ -131,7 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             $('<td><img src="' + image + '" style="width:60px; height:70px;"></td><td>"' + castarr[i].name + '"</td><td>' + castarr[i].character + '</td>').appendTo("tr[id$='" + i + "']");
                         } else {
                             $('<tr style="border-bottom: 1px solid #ddd;" id="' + i + '"></tr>').appendTo("#cast");
-                            $('<td><img src="http://image.tmdb.org/t/p/w185' + image + '" style="width:60px; height:70px;"></td><td>' + castarr[i].name + '</td><td>' + castarr[i].character + '</td>').appendTo("tr[id$='" + i + "']");
+                            $('<td><img src="https://image.tmdb.org/t/p/w185' + image + '" style="width:60px; height:70px;"></td><td>' + castarr[i].name + '</td><td>' + castarr[i].character + '</td>').appendTo("tr[id$='" + i + "']");
                         }
 
                     }
@@ -161,7 +161,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             image = "resources/default_img.jpg";
                             $('<td><img src="' + image + '" class="imgrec">').appendTo("#first");
                         } else {
-                            $('<td><img src="http://image.tmdb.org/t/p/w185' + image + '" class="imgrec"></td>').appendTo("#first");
+                            $('<td><img src="https://image.tmdb.org/t/p/w185' + image + '" class="imgrec"></td>').appendTo("#first");
                         }
                     }
                     for (let i = 3; i < 6; i++) {
@@ -170,7 +170,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             image = "resources/default_img.jpg";
                             $('<td><img src="' + image + '" class="imgrec">').appendTo("#second");
                         } else {
-                            $('<td><img src="http://image.tmdb.org/t/p/w185' + image + '" class="imgrec"></td>').appendTo("#second");
+                            $('<td><img src="https://image.tmdb.org/t/p/w185' + image + '" class="imgrec"></td>').appendTo("#second");
                         }
                     }
                 } else {
@@ -180,7 +180,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             image = "resources/default_img.jpg";
                             $('<td><img src="' + image + '" class="imgrec"></td>').appendTo("#first");
                         } else {
-                            $('<td><img src="http://image.tmdb.org/t/p/w185' + image + '" class="imgrec"></td>').appendTo("#first");
+                            $('<td><img src="https://image.tmdb.org/t/p/w185' + image + '" class="imgrec"></td>').appendTo("#first");
                         }
                     }
                     for (let i = 3; i < recarr.length; i++) {
@@ -189,7 +189,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             image = "resources/default_img.jpg";
                             $('<td><img src="' + image + '" class="imgrec"></td>').appendTo("#second");
                         } else {
-                            $('<td><img src="http://image.tmdb.org/t/p/w185' + image + '" class="imgrec"></td>').appendTo("#second");
+                            $('<td><img src="https://image.tmdb.org/t/p/w185' + image + '" class="imgrec"></td>').appendTo("#second");
                         }
                     }
                 }
