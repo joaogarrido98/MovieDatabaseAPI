@@ -1,6 +1,7 @@
-*{
+* {
     outline: none;
 }
+
 body,
 html {
     margin: 0;
@@ -22,17 +23,16 @@ section header {
     padding: 2em 1em 1em 1em;
 }
 
-section header i{
+section header i {
     font-size: 2.5rem;
 }
 
 section header h1 {
     font-size: 2.5rem;
-    margin-bottom: 0.25em;
     font-weight: 600;
 }
 
-.d-inline-block{
+.d-inline-block {
     display: inline-block;
 }
 
@@ -56,6 +56,7 @@ section header h1 {
     border-left: none;
     cursor: pointer;
     border-radius: 0 10px 10px 0;
+    transition: 0.3s all ease-in-out;
 }
 
 .search-txt {
@@ -71,25 +72,62 @@ section header h1 {
     border-radius: 10px 0 0 10px;
 }
 
-.main_search{
+.main_search {
     text-align: center;
-    padding: 1em;    
-    margin-bottom: 2em;
+    padding: 1em;
+}
+
+.main_search button {
+    font-size: 1em;
+    font-weight: bold;
+    padding: .5em 1em;
+    background-color: #8a0b8a;
+    color: #ffffff;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    margin: .25em .5em;
+    transition: 0.3s all ease-in-out;
+}
+
+.main_search button:hover,
+.search-btn:hover {
+    background-color: #c92091;
+    border-color: #c92091;
+}
+
+.active{
+    background-color: #c92091!important;
+    border-color: #c92091!important;
+}
+
+#films {
+    margin: 0;
+    display: none;
+    padding: 0;
 }
 
 #filmsList {
-    background-color: #3b424d;
-    display: none;
-    border-radius: 16px;
-    color: white;
+    list-style: none;
+    margin: auto;
+    text-align: center;
+    padding: 0;
+    margin-top: 40px;
+}
+
+#filmsList li{
+    display: inline;
+    list-style: none;
+    margin: auto;
+    text-align: center;
     padding: 10px;
 }
 
 .poster {
+    display: inline;
     position: relative;
     margin: 10px;
 }
-
 .poster p {
     padding: 5px;
     margin: 0 !important;
@@ -107,22 +145,19 @@ section header h1 {
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
 }
+.poster:hover img{
+    opacity: 0.8;
+}
+
+
 
 .poster:hover .text-descr {
     opacity: 1;
-}
-
-ul {
-    margin: 0;
-    padding: 0;
 }
 
 img {
     border-radius: 10px;
     width: 250px;
     height: 300px;
-}
-
-.results {
-    margin-top: 20vh;
+    transition: 0.3s all ease-in-out;
 }
