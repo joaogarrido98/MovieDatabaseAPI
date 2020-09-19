@@ -39,11 +39,11 @@ document.addEventListener("DOMContentLoaded", () => {
                                 let textDiv = document.createElement("div");
                                 textDiv.className = "text-descr";
                                 let p = document.createElement("p");
-                                p.innerText = movies[i].title;
+                                p.textContent = movies[i].title;
                                 textDiv.appendChild(p);
                                 div.appendChild(a);
                                 div.appendChild(textDiv);
-                                a.appendChild(imgElement);                                
+                                a.appendChild(imgElement);
                                 li.appendChild(div);
                             }
                         }

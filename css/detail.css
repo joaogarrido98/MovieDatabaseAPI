@@ -1,16 +1,36 @@
-body, html {
+body,
+html {
     margin: 0;
     height: 100%;
     font-family: 'Varela Round', sans-serif;
 }
 
-body{
-    background: url("../img/background.jpg") no-repeat center center fixed;
+body {
+    background: url("../img/background.png") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
 }
+
+.tr_review {
+    border-bottom: 1px solid #ddd;
+}
+
+.td_author {
+    padding: 10px;
+    width: 20%;
+}
+
+.td_content {
+    width: 70%;
+    text-align: left;
+}
+
+.td_button {
+    width: 10%;
+}
+
 div.backBtn {
     width: 150px;
     left: 30px;
@@ -167,7 +187,7 @@ div.backBtn:hover span.bLine {
 }
 
 #iframe {
-    position: relative!important;
+    position: relative !important;
     top: 1em;
     width: 100%;
     display: block;
@@ -298,7 +318,8 @@ th {
     height: 150px;
 }
 
-.modal-content, #caption {
+.modal-content,
+#caption {
     animation-name: zoom;
     animation-duration: 0.6s;
 }
@@ -307,6 +328,7 @@ th {
     from {
         transform: scale(0)
     }
+
     to {
         transform: scale(1)
     }
@@ -347,7 +369,8 @@ th {
     transition: 0.3s;
 }
 
-.close:hover, .close:focus {
+.close:hover,
+.close:focus {
     color: #bbb;
     text-decoration: none;
     cursor: pointer;
@@ -371,21 +394,28 @@ th {
     width: 100%;
     text-align: center;
 }
-#rec{
+
+#rec {
     width: 40%;
 }
+
+
+
 @media only screen and (max-width: 1024px) {
     .container {
         width: 80%;
         margin-left: 15%;
     }
+
     .top {
         position: relative;
     }
+
     #movieinfo {
         max-width: 100%;
         display: block;
     }
+
     #rating {
         display: inline-block;
         float: none;
@@ -393,6 +423,7 @@ th {
         margin-top: 10px;
         margin-left: 10px;
     }
+
     .imageholder {
         max-width: 100%;
         left: 5%;
@@ -400,22 +431,27 @@ th {
         top: 5%;
         border-radius: 10px;
     }
+
     #img {
         height: 30%;
         width: 90%;
     }
+
     #backBtnsm {
         display: block;
     }
+
     #backbg {
         display: none;
     }
+
     .informationholder {
         max-width: 100%;
         right: 0;
         float: none;
         text-align: justify;
     }
+
     #imdb {
         position: fixed;
         top: 70px;
@@ -423,11 +459,13 @@ th {
         height: 30px;
         width: 30px;
     }
+
     #imdbimg {
         height: 30px;
         width: 30px;
     }
-    #rec{
+
+    #rec {
         width: 100%;
     }
 }
