@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="img/icon.jpg">
     <link rel="stylesheet" href="css/detail.css?version=2">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Varela+Round&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+    <link href="https://fonts.googleapis.com/css?family=Kufam:wght@500&display=swap" rel="stylesheet">
     <title>MovieDB</title>
 </head>
 
@@ -22,107 +22,102 @@
     </a>
     <a style="text-decoration: none;" id="backBtnsm" href="index.html">
         <div class="backBtnsm">
-        <span><i class="fa fa-arrow-left"></i></span>
+            <span><i class="fa fa-arrow-left"></i></span>
         </div>
     </a>
-    <div class="container">
-        <div id="myModal" class="modal">
-            <span class="close">&times;</span>
-            <img class="modal-content" id="img01">
-            <div id="caption"></div>
-          </div>
-        <div id="top">
-            <div id="movieinfo">
-                <span id="titlemovie"></span>
-                <br>
-                <span class="mininfo" id="language" style="position: relative; top: 4px;"></span>
-                <span class="mininfo" id="runtime" style="position: relative; top: 4px;"></span>
-                <span class="mininfo" id="genres" style="position: relative; top: 4px;"></span>
-            </div>
-            <div id="rating">
-                <span><img src="img/star.png" width="25" height="25"></span>
-                <span id="average"></span>
-                <span style="color: rgb(192, 192, 59); font-weight: 600;">/10</span>
-                <br>
-                <hr style="border-color: black; margin:0;">
-                <span id="totalrate" style="float: right; color: rgb(184, 184, 204); margin-top: 2px;"></span>
-            </div>
+    <div id="myModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="img01">
+        <div id="caption"></div>
+    </div>
+    <section id="top">
+        <div id="movieinfo">
+            <span id="titlemovie"></span>
+            <br>
+            <span class="mininfo" id="language"></span>
+            <span class="mininfo" id="runtime"></span>
+            <span class="mininfo" id="genres"></span>
         </div>
-        <div class="center">
+        <div class="top-center">
             <div class="imageholder">
                 <img src="img/default_img.jpg" id="img">
-                <br>
-                <span id="tagline"></span>
-                <br>
             </div>
+            <section class="rating-section">
+                <div id="rating">
+                    <span><img src="img/star.png" width="25" height="25"></span>
+                    <span class="stars" id="average"></span>
+                    <span class="stars">/10</span>
+                    <br>
+                    <hr style="border-color: black; margin:0;">
+                    <span id="totalrate"></span>
+                </div>
+            </section>
             <div class="informationholder">
-                <span id="overview"></span>    
+                <span id="overview"></span>
                 <br>
                 <div class="frame">
                     <iframe id="iframe" frameborder="0" allowfullscreen></iframe>
-                </div>            
+                </div>
             </div>
         </div>
-        <div class="recommendations">
-            <h2 style="display: inline-block; margin-bottom: 0px;">If you like this, try these:</h2>
-            <hr style="border-color:grey;">
-            <table id="rec">
-                <tr id="first">
-                </tr>
-                <tr id="second">
-                </tr>
-            </table>
+    </section>
+    <div class="recommendations">
+        <h2 style="display: inline-block; margin-bottom: 0px;">If you like this, try these:</h2>
+        <hr style="border-color:grey;">
+        <table id="rec">
+            <tr id="second">
+            </tr>
+        </table>
+    </div>
+    <div class="castcrew">
+        <h2 style="display: inline-block; margin-bottom: 0px;">Cast:</h2>
+        <hr style="border-color:grey;">
+        <table id="cast">
+        </table>
+    </div>
+    <div class="down">
+        <h2 style="display: inline-block; margin-bottom: 0;">More About this Movie: </h2>
+        <!--meter o diretor, 3 primeiras stars sem fotos-->
+        <hr style="border-color:grey;">
+        <div class="infos">
+            <h3 style="margin-bottom: 0;">Informations:</h3>
+            <span style="font-weight: 600; margin-left: 20px;">Budget: </span><span id="budget"
+                style="margin-top: 10px; display: inline-block;"></span>
+            <br>
+            <span style="font-weight: 600; margin-left: 20px;">Revenue: </span><span id="revenue"
+                style="margin-top: 10px; display: inline-block;"></span>
+            <br>
+            <span style="font-weight: 600; margin-left: 20px;">Status: </span><span id="status"
+                style="margin-top: 10px; display: inline-block;"></span>
+            <br>
+            <span style="font-weight: 600; margin-left: 20px;">Plot Keywords: </span><span id="keywords"
+                style="margin-top: 10px; display: inline-block;"></span>
+            <br>
+            <h3 style="margin-bottom: 0;">Production:</h3>
+            <span style="font-weight: 600; margin-left: 20px;">Production Companies: </span><span id="pcs"
+                style="margin-top: 10px; display: inline-block;"></span>
+            <br>
+            <span style="font-weight: 600; margin-left: 20px;">Production Countries: </span><span id="pc"
+                style="margin-top: 10px; display: inline-block;"></span>
+            <br>
+            <h3 style="margin-bottom: 0;">Extras:</h3>
+            <span id="link" style="font-weight: 600; margin-left: 20px; margin-top:10px; display: inline-block;"><a
+                    id="homepage" style="color: black; text-decoration: none;">Website <i class="fa fa-external-link"
+                        aria-hidden="true"></i></span></a>
+            <br>
         </div>
-        <div class="castcrew">
-            <h2 style="display: inline-block; margin-bottom: 0px;">Cast:</h2>
-            <hr style="border-color:grey;">
-            <table id="cast">
-            </table>
-        </div>
-        <div class="down">
-            <h2 style="display: inline-block; margin-bottom: 0;">More About this Movie: </h2>
-            <!--meter o diretor, 3 primeiras stars sem fotos-->
-            <hr style="border-color:grey;">
-            <div class="infos">
-                <h3 style="margin-bottom: 0;">Informations:</h3>
-                <span style="font-weight: 600; margin-left: 20px;">Budget: </span><span id="budget"
-                    style="margin-top: 10px; display: inline-block;"></span>
-                <br>
-                <span style="font-weight: 600; margin-left: 20px;">Revenue: </span><span id="revenue"
-                    style="margin-top: 10px; display: inline-block;"></span>
-                <br>
-                <span style="font-weight: 600; margin-left: 20px;">Status: </span><span id="status"
-                    style="margin-top: 10px; display: inline-block;"></span>
-                <br>
-                <span style="font-weight: 600; margin-left: 20px;">Plot Keywords: </span><span id="keywords"
-                    style="margin-top: 10px; display: inline-block;"></span>
-                <br>
-                <h3 style="margin-bottom: 0;">Production:</h3>
-                <span style="font-weight: 600; margin-left: 20px;">Production Companies: </span><span id="pcs"
-                    style="margin-top: 10px; display: inline-block;"></span>
-                <br>
-                <span style="font-weight: 600; margin-left: 20px;">Production Countries: </span><span id="pc"
-                    style="margin-top: 10px; display: inline-block;"></span>
-                <br>
-                <h3 style="margin-bottom: 0;">Extras:</h3>
-                <span id="link" style="font-weight: 600; margin-left: 20px; margin-top:10px; display: inline-block;"><a
-                        id="homepage" style="color: black; text-decoration: none;">Website <i
-                            class="fa fa-external-link" aria-hidden="true"></i></span></a>
-                <br>
-            </div>
-            <hr style="border-color:grey;">
-        </div>
-        <div class="reviews">
-            <h2 style="display: inline-block; margin-bottom: 0px;">Review:</h2>
-            <hr style="border-color:grey;">
-            <table id="review" style="position: relative; top:1em; width: 100%; text-align: center;">
-                <tr>
-                    <th>Author</th>
-                    <th>Review</th>
-                    <th>Link</th>
-                </tr>
-            </table>
-        </div>
+        <hr style="border-color:grey;">
+    </div>
+    <div class="reviews">
+        <h2 style="display: inline-block; margin-bottom: 0px;">Review:</h2>
+        <hr style="border-color:grey;">
+        <table id="review" style="position: relative; top:1em; width: 100%; text-align: center;">
+            <tr>
+                <th>Author</th>
+                <th>Review</th>
+                <th>Link</th>
+            </tr>
+        </table>
     </div>
     <a id="imdb"><img id="imdbimg" src="img/imdb.png"></a>
 

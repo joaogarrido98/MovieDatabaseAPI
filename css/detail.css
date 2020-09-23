@@ -6,12 +6,148 @@ html {
 }
 
 body {
-    background: url("../img/background.png") no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+    background: #232526;
+    background: -webkit-linear-gradient(to right, #222222, #232526);
+    background: linear-gradient(to right, #222222, #232526);
 }
+
+.backBtn {
+    width: 150px;
+    left: 30px;
+    top: 50px;
+    background-color: #F76060;
+    transition: all 0.4s ease;
+    cursor: pointer;
+}
+
+.label {
+    position: absolute;
+    left: 0px;
+    top: 5px;
+    width: 100%;
+    color: #F4f4f4;
+    text-align: center;
+    transition: all 0.4s ease;
+    font-size: 1em;
+}
+
+
+.line {
+    bottom: auto;
+    right: auto;
+    top: auto;
+    left: auto;
+    background-color: #F76060;
+    border-radius: 10px;
+    width: 100%;
+    left: 0px;
+    height: 2px;
+    display: block;
+    position: absolute;
+    transition: width 0.2s ease 0.1s, left 0.2s ease, transform 0.2s ease 0.3s, background-color 0.2s ease;
+}
+
+.tLine {
+    top: 0px;
+}
+
+.mLine {
+    top: 13px;
+    opacity: 0;
+}
+
+.bLine {
+    top: 26px;
+}
+
+.backBtn:hover span.label {
+    left: 25px
+}
+
+.backBtn:hover span.line {
+    left: -10px;
+    height: 5px;
+    background-color: #F76060;
+}
+
+.backBtn:hover span.tLine {
+    width: 25px;
+    transform: rotate(-45deg);
+    left: -15px;
+    top: 6px;
+}
+
+.backBtn:hover span.mLine {
+    opacity: 1;
+    width: 30px;
+}
+
+.backBtn:hover span.bLine {
+    width: 25px;
+    transform: rotate(45deg);
+    left: -15px;
+    top: 20px;
+}
+
+#top {
+    height: auto;
+    padding: 25px;
+    margin-top: 2rem;
+}
+#movieinfo {
+    margin-left: 5%;
+    display: block;
+    max-width: 50%;
+    left: 0.80em;
+}
+.top-center{
+    display: flex;
+}
+.mininfo {
+    font-weight: 600;
+    color: rgb(165, 165, 173);
+    font-size: small;
+}
+.imageholder {
+    display: inline-block;
+    margin-top: 1rem;
+    margin-left: 5%;
+    max-width: 30%;
+    max-height: 60%;
+    background-color: #bbb;
+    border-radius: 10px;
+}
+#img {
+    cursor: pointer;
+    transition: 0.3s;
+    width: 280px;
+    height: 100%;
+    border-radius: 10px;
+}
+#img:hover {
+    opacity: 0.7;
+}
+.rating-section{
+    margin-left: 5%;
+}
+#totalrate{
+    float: right; 
+    color: rgb(184, 184, 204); 
+    margin-top: 2px;
+}
+#rating {
+    display: inline-block;
+    right: 20%;
+    position: relative;
+    top: 1em;
+}
+.informationholder {
+    max-width: 50%;
+    position: relative;
+    display: block;
+    margin-top: 5%;
+}
+
 
 .tr_review {
     border-bottom: 1px solid #ddd;
@@ -31,114 +167,10 @@ body {
     width: 10%;
 }
 
-div.backBtn {
-    width: 150px;
-    left: 30px;
-    top: 50px;
-    background-color: #F76060;
-    transition: all 0.4s ease;
-    position: fixed;
-    cursor: pointer;
-}
-
-span.line {
-    bottom: auto;
-    right: auto;
-    top: auto;
-    left: auto;
-    background-color: #F76060;
-    border-radius: 10px;
-    width: 100%;
-    left: 0px;
-    height: 2px;
-    display: block;
-    position: absolute;
-    transition: width 0.2s ease 0.1s, left 0.2s ease, transform 0.2s ease 0.3s, background-color 0.2s ease;
-}
-
-span.tLine {
-    top: 0px;
-}
-
-span.mLine {
-    top: 13px;
-    opacity: 0;
-}
-
-span.bLine {
-    top: 26px;
-}
-
-.label {
-    position: absolute;
-    left: 0px;
-    top: 5px;
-    width: 100%;
-    color: #F4f4f4;
-    text-align: center;
-    transition: all 0.4s ease;
-    font-size: 1em;
-}
-
-div.backBtn:hover span.label {
-    left: 25px
-}
-
-div.backBtn:hover span.line {
-    left: -10px;
-    height: 5px;
-    background-color: #F76060;
-}
-
-div.backBtn:hover span.tLine {
-    width: 25px;
-    transform: rotate(-45deg);
-    left: -15px;
-    top: 6px;
-}
-
-div.backBtn:hover span.mLine {
-    opacity: 1;
-    width: 30px;
-}
-
-div.backBtn:hover span.bLine {
-    width: 25px;
-    transform: rotate(45deg);
-    left: -15px;
-    top: 20px;
-}
-
-.container {
-    display: block;
-    margin-left: 20%;
-    width: 60%;
-    background-color: rgb(53, 53, 53);
-    height: 100%;
-}
-
-#top {
-    height: auto;
-    padding: 25px;
-    background-color: rgb(53, 53, 53);
-}
-
-.center {
-    padding: 20px;
-    background-color: rgb(165, 165, 173);
-    height: auto;
-}
-
-#rating {
-    float: right;
-    right: 20%;
-    position: relative;
-    top: 1em;
-}
-
-#average {
+.stars {
+    color: rgb(192, 192, 59);
+    font-weight: 600;
     font-size: x-large;
-    color: rgb(187, 168, 29);
 }
 
 #date {
@@ -151,35 +183,6 @@ div.backBtn:hover span.bLine {
     color: khaki;
 }
 
-#movieinfo {
-    position: relative;
-    display: inline-block;
-    max-width: 50%;
-    left: 0.80em;
-}
-
-.informationholder {
-    height: auto;
-    max-width: 50%;
-    right: 10%;
-    position: relative;
-    float: right;
-    top: 1em;
-}
-
-.mininfo {
-    left: 2px;
-    color: rgb(165, 165, 173);
-    font-size: small;
-}
-
-.imageholder {
-    position: relative;
-    display: inline-block;
-    max-width: 30%;
-    left: 3em;
-    top: 0.40em;
-}
 
 #overview {
     text-align: center;
@@ -192,12 +195,6 @@ div.backBtn:hover span.bLine {
     width: 100%;
     display: block;
     height: 300px;
-}
-
-#tagline {
-    position: relative;
-    font-size: 1.5em;
-    font-weight: 600;
 }
 
 .down {
@@ -235,25 +232,12 @@ th {
     background-color: rgb(133, 133, 138);
     padding: 10px;
 }
-
 .imgrec {
     width: 100%;
     height: 80%;
 }
 
 .imgrec:hover {
-    opacity: 0.7;
-}
-
-#img {
-    cursor: pointer;
-    transition: 0.3s;
-    width: 280px;
-    height: 380px;
-    border-radius: 10px;
-}
-
-#img:hover {
     opacity: 0.7;
 }
 

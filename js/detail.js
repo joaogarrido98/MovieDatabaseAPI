@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let url = new URL(url_string);
     let movieId = url.searchParams.get("movie");
     enlarge();
-    
+
     fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${api}`)
         .then(response => response.json())
         .then(response => {
@@ -23,7 +23,6 @@ document.addEventListener("DOMContentLoaded", () => {
             let pcsarr = response["production_companies"];
             let pcarr = response["production_countries"];
             let homepage = response["homepage"];
-            let tagline = response["tagline"];
             let runtime = response["runtime"];
             let overview = response["overview"];
             let languagearr = response["spoken_languages"];
@@ -58,12 +57,6 @@ document.addEventListener("DOMContentLoaded", () => {
             } else {
                 budget = "Unknown";
                 document.querySelector("#budget").textContent = budget;
-            }
-            if (tagline != "") {
-                document.querySelector("#tagline").textContent = '"' + tagline + '"';
-            } else {
-                tagline = ""
-                document.querySelector("#tagline").textContent = tagline;
             }
             document.querySelector("#language").textContent = languagearr[0].name + " |";
             for (let i = 0; i < genresarr.length; i++) {
@@ -118,9 +111,7 @@ function getReviews(movieId, api) {
                 document.querySelector(".reviews").style.display = "none";
             } else {
                 for (let i = 0; i < reviewarr.length; i++) {
-                    let ids = "review" + i;
                     let tr = document.createElement("tr");
-                    tr.id = ids;
                     tr.className = "tr_review";
                     document.querySelector("#review").appendChild(tr);
                     let td_author = document.createElement("td");
@@ -175,7 +166,7 @@ function getVideo(movieId, api) {
         });
 }
 
-function getCredits(movieId,api) {
+function getCredits(movieId, api) {
     $.ajax({
         url: "https://api.themoviedb.org/3/movie/" + movieId + "/credits",
         type: "GET",
@@ -189,7 +180,7 @@ function getCredits(movieId,api) {
                 for (let i = 0; i < 15; i++) {
                     let image = castarr[i].profile_path;
                     if (image == null) {
-                        image = "resources/default_img.jpg";
+                        image = "../img/default_img.jpg";
                         $('<tr style="border-bottom: 1px solid #ddd;" id="' + i + '"></tr>').appendTo("#cast");
                         $('<td><img src="' + image + '" style="width:60px; height:70px;"></td><td>' + castarr[i].name + '</td><td>' + castarr[i].character + '</td>').appendTo("tr[id$='" + i + "']");
                     } else {
@@ -202,7 +193,7 @@ function getCredits(movieId,api) {
                 for (let i = 0; i < castarr.length; i++) {
                     let image = castarr[i].profile_path;
                     if (image == null) {
-                        image = "resources/default_img.jpg";
+                        image = "../img/default_img.jpg";
                         $('<tr style="border-bottom: 1px solid #ddd;" id="' + i + '"></tr>').appendTo("#cast");
                         $('<td><img src="' + image + '" style="width:60px; height:70px;"></td><td>"' + castarr[i].name + '"</td><td>' + castarr[i].character + '</td>').appendTo("tr[id$='" + i + "']");
                     } else {
@@ -229,47 +220,15 @@ function getRecommendation(movieId, api) {
         },
         success: function (resposta) {
             let recarr = resposta["results"];
-            if (recarr.length > 6) {
-                for (let i = 0; i < 3; i++) {
-                    let image = recarr[i].poster_path;
-                    if (image == null) {
-                        image = "resources/default_img.jpg";
-                        $('<td><img src="' + image + '" class="imgrec">').appendTo("#first");
-                    } else {
-                        $('<td><img src="https://image.tmdb.org/t/p/w185' + image + '" class="imgrec"></td>').appendTo("#first");
-                    }
-                }
-                for (let i = 3; i < 6; i++) {
-                    let image = recarr[i].poster_path;
-                    if (image == null) {
-                        image = "resources/default_img.jpg";
-                        $('<td><img src="' + image + '" class="imgrec">').appendTo("#second");
-                    } else {
-                        $('<td><img src="https://image.tmdb.org/t/p/w185' + image + '" class="imgrec"></td>').appendTo("#second");
-                    }
-                }
-            } else {
-                for (let i = 0; i < 3; i++) {
-                    let image = recarr[i].poster_path;
-                    if (image == null) {
-                        image = "resources/default_img.jpg";
-                        $('<td><img src="' + image + '" class="imgrec"></td>').appendTo("#first");
-                    } else {
-                        $('<td><img src="https://image.tmdb.org/t/p/w185' + image + '" class="imgrec"></td>').appendTo("#first");
-                    }
-                }
-                for (let i = 3; i < recarr.length; i++) {
-                    let image = recarr[i].poster_path;
-                    if (image == null) {
-                        image = "resources/default_img.jpg";
-                        $('<td><img src="' + image + '" class="imgrec"></td>').appendTo("#second");
-                    } else {
-                        $('<td><img src="https://image.tmdb.org/t/p/w185' + image + '" class="imgrec"></td>').appendTo("#second");
-                    }
+            for (let i = 3; i < recarr.length; i++) {
+                let image = recarr[i].poster_path;
+                if (image == null) {
+                    image = "../img/default_img.jpg";
+                    $('<td><img src="' + image + '" class="imgrec"></td>').appendTo("#second");
+                } else {
+                    $('<td><img src="https://image.tmdb.org/t/p/w185' + image + '" class="imgrec"></td>').appendTo("#second");
                 }
             }
-
-
         },
         error: function (erro) {
             console.log("Request Failed");
