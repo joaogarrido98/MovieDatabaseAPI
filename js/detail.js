@@ -209,29 +209,25 @@ function getCredits(movieId, api) {
         }
     });
 }
+
 function getRecommendation(movieId, api) {
-    $.ajax({
-        url: "https://api.themoviedb.org/3/movie/" + movieId + "/recommendations",
-        type: "GET",
-        dataType: "JSON",
-        data: {
-            api_key: "f7598fda063f671ed1a42ea9387b6526",
-            language: "en-US",
-        },
-        success: function (resposta) {
-            let recarr = resposta["results"];
-            for (let i = 3; i < recarr.length; i++) {
+    fetch(`https://api.themoviedb.org/3/movie/${movieId}/recommendations?api_key=${api}`)
+        .then(response => response.json())
+        .then(response => {
+            let recarr = response["results"];
+            for (let i = 0; i < recarr.length; i++) {
                 let image = recarr[i].poster_path;
                 if (image == null) {
                     image = "../img/default_img.jpg";
-                    $('<td><img src="' + image + '" class="imgrec"></td>').appendTo("#second");
                 } else {
-                    $('<td><img src="https://image.tmdb.org/t/p/w185' + image + '" class="imgrec"></td>').appendTo("#second");
+                    image = 'https://image.tmdb.org/t/p/w185' + image;
                 }
+                let li = document.createElement("li");
+                let img = document.createElement("img");
+                img.src = image;
+                img.className = "imgrec";
+                li.appendChild(img)
+                document.querySelector("#second").appendChild(li);
             }
-        },
-        error: function (erro) {
-            console.log("Request Failed");
-        }
-    });
+        });
 }
