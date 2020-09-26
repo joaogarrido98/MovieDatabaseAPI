@@ -159,6 +159,14 @@ body {
     display: inline-flex;
     margin: 10px;
 }
+
+.creditCast{
+    border-bottom: 1px solid #ddd;
+}
+.castImg{
+    height: 80px;
+    width: 70px;
+}
 .tr_review {
     border-bottom: 1px solid #ddd;
 }

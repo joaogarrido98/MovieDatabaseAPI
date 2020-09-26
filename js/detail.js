@@ -167,47 +167,34 @@ function getVideo(movieId, api) {
 }
 
 function getCredits(movieId, api) {
-    $.ajax({
-        url: "https://api.themoviedb.org/3/movie/" + movieId + "/credits",
-        type: "GET",
-        dataType: "JSON",
-        data: {
-            api_key: "f7598fda063f671ed1a42ea9387b6526",
-        },
-        success: function (resposta) {
-            let castarr = resposta["cast"];
-            if (castarr.length > 15) {
-                for (let i = 0; i < 15; i++) {
-                    let image = castarr[i].profile_path;
-                    if (image == null) {
-                        image = "../img/default_img.jpg";
-                        $('<tr style="border-bottom: 1px solid #ddd;" id="' + i + '"></tr>').appendTo("#cast");
-                        $('<td><img src="' + image + '" style="width:60px; height:70px;"></td><td>' + castarr[i].name + '</td><td>' + castarr[i].character + '</td>').appendTo("tr[id$='" + i + "']");
-                    } else {
-                        $('<tr style="border-bottom: 1px solid #ddd;" id="' + i + '"></tr>').appendTo("#cast");
-                        $('<td><img src="https://image.tmdb.org/t/p/w185' + image + '" style="width:60px; height:70px;"></td><td>' + castarr[i].name + '</td><td>' + castarr[i].character + '</td>').appendTo("tr[id$='" + i + "']");
-                    }
-
+    fetch(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${api}`)
+        .then(response => response.json())
+        .then(response => {
+            let castarr = response["cast"];
+            for (let i = 0; i < castarr.length; i++) {
+                let image = castarr[i].profile_path;
+                if (image == null) {
+                    image = "../img/default_img.jpg";
+                } else {
+                    image = 'https://image.tmdb.org/t/p/w185' + image;
                 }
-            } else {
-                for (let i = 0; i < castarr.length; i++) {
-                    let image = castarr[i].profile_path;
-                    if (image == null) {
-                        image = "../img/default_img.jpg";
-                        $('<tr style="border-bottom: 1px solid #ddd;" id="' + i + '"></tr>').appendTo("#cast");
-                        $('<td><img src="' + image + '" style="width:60px; height:70px;"></td><td>"' + castarr[i].name + '"</td><td>' + castarr[i].character + '</td>').appendTo("tr[id$='" + i + "']");
-                    } else {
-                        $('<tr style="border-bottom: 1px solid #ddd;" id="' + i + '"></tr>').appendTo("#cast");
-                        $('<td><img src="https://image.tmdb.org/t/p/w185' + image + '" style="width:60px; height:70px;"></td><td>' + castarr[i].name + '</td><td>' + castarr[i].character + '</td>').appendTo("tr[id$='" + i + "']");
-                    }
-
-                }
+                let tdImage = document.createElement("td");
+                let img = document.createElement("img");
+                img.src = image;
+                img.className = "castImg";
+                tdImage.appendChild(img);
+                let tdCast = document.createElement("td");
+                tdCast.textContent = castarr[i].name;
+                let tdCharacter = document.createElement("td");
+                tdCharacter.textContent = castarr[i].character;
+                let tr = document.createElement("tr");
+                tr.className = "creditCast";
+                tr.appendChild(tdImage);
+                tr.appendChild(tdCast);
+                tr.appendChild(tdCharacter);
+                document.querySelector("#cast").appendChild(tr);
             }
-        },
-        error: function (erro) {
-            console.log("Request Failed");
-        }
-    });
+        });
 }
 
 function getRecommendation(movieId, api) {
