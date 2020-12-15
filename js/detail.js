@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 imgref = "https://image.tmdb.org/t/p/w500" + img;
                 document.querySelector("#img").src = imgref;
             } else {
-                imgref = "../img/default_img.jpg"
+                imgref = "./img/default_img.jpg"
                 document.querySelector("#img").src = imgref;
             }
             if (title !== "") {
