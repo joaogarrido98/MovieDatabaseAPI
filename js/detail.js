@@ -115,7 +115,7 @@ function getReviews(movieId, api) {
                     tr.className = "tr_review";
                     document.querySelector("#review").appendChild(tr);
                     let td_author = document.createElement("td");
-                    td_author.className = "td_author";./
+                    td_author.className = "td_author";
                     td_author.textContent = reviewarr[i].author;
                     let td_content = document.createElement("td");
                     td_content.className = "td_content";
